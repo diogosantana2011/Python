@@ -1,0 +1,8 @@
+03/09/2021 12:05:23 PM: INFO: main: Line: 69 Logs folder already exists! Writting in existing file!
+03/09/2021 12:05:31 PM: INFO: main: Line: 87 https://lb.mp.playtech.com/3rdparty/metrics/i_logins?startDate=2019-01-01&endDate=2020-12-30
+03/09/2021 12:05:31 PM: DEBUG: _new_conn: Line: 971 Starting new HTTPS connection (1): lb.mp.playtech.com:443
+03/09/2021 12:05:32 PM: DEBUG: _make_request: Line: 452 https://lb.mp.playtech.com:443 "GET /3rdparty/metrics/i_logins?startDate=2019-01-01&endDate=2020-12-30 HTTP/1.1" 200 None
+03/09/2021 12:05:32 PM: INFO: main: Line: 104 The total logins for requested dates: 8635
+03/09/2021 12:05:32 PM: WARNING: main: Line: 126 Folder already exists.
+03/09/2021 12:05:32 PM: INFO: main: Line: 141 File Saved in folder /Users/diogo.santana/Learning/LinkedIn/Scripting/Metrics_scripts/extracted-json-data!
+
