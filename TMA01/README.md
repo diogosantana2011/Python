@@ -1,15 +1,8 @@
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
-3. [Installation](#script-setup)
-
-   -[Mongo](#mongo)
-   
-   -[Python](#python)
-
-6. [Running Scripts](#running-scripts)
-7. [Collaboration](#collaboration)
-8. [FAQs](#faqs)
+3. [Python](#python)
+4. [Running Scripts](#running-scripts)
 
 ### General Info
 ***
@@ -17,12 +10,13 @@ These are random Python files created while studying TM112 for Computing and IT.
 
 ### A little funny (the guy who made it mispelled 'paste' too) meme to start us off!
 ![Image text](https://tse1.mm.bing.net/th?id=OIP.95Qw7RnpPEl6HXuuTpozRwHaHY&pid=Api&P=0&w=300&h=300)
+
 ## Technologies
 ***
 A list of technologies used within the project:
 * [Python 3.9.7] (https://www.python.org/): Version 3.9.7
 
-# Python
+## Python
 Please bear in mind that if certain Python Modules (such as: requests, json, os, logging, datetime, pymongo etc.) are not installed on your machine, scripts will fail. 
 To install modules please so as to not have any of the scripts fail.
 This can be done via shell using 'pip'. To see currently installed version of python please use 'python --version'.
