@@ -2,6 +2,7 @@ from turtle import *
 import turtle
 
 ws = turtle.Screen()
+number_of_elements = 5
 start_x_pos = -320
 start_y_pos = 0
 
@@ -19,7 +20,7 @@ def draw_shape(x, y):
 
 # Range +1 to count also 5th shape 
 # Otherwise range woudl stop at 4
-for shape in range(1, 6):
+for shape in range(1, number_of_elements+1):
     start_x_pos += 100
     start_y_pos += 0
       
