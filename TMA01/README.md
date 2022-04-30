@@ -18,9 +18,10 @@ A list of technologies used within the project:
 
 ## Python
 Please bear in mind that if certain Python Modules (such as: requests, json, os, logging, datetime, pymongo etc.) are not installed on your machine, scripts will fail. 
-To install modules please so as to not have any of the scripts fail.
-This can be done via shell using 'pip'. To see currently installed version of python please use 'python --version'.
-To see the installed modules you can use command 'pip list'. 
+To run scripts successfully, install said modules/libraries so as to not have any of the scripts fail when actioned. Your IDE Linter should also alert you to this, be it VSCode, or even python IDE. 
+
+To see current installed packages, open your terminal and using 'pip list' you will see currently installed packages. 
+To see currently installed version of python please use 'python --version'.
 
 Something similar to the below will display:
 ```
@@ -39,7 +40,7 @@ urllib3            1.26.7
 ***
 ## Running-scripts
 ***
-Please bear in mind pre-installation guide information prior to running scripts, as otherwise errors will be encountered (TODO/fix). 
+Please refer to [Python](#python) above to ensure libraries required for running scripts successfully are isntalled on your machine. 
 ```
 $ git clone https://github.com/diogosantana2011/diogosantana2011.git
 $ cd ../path/to/the/file
