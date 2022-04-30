@@ -56,7 +56,7 @@ $ python OR python3 specfile.py
 
 # Collaboration
 
-If you want to use any script to obtain extracted data from any JSON returning API; be my guest =D.
+If you want to use any script to obtain extracted data from any JSON returning API; or any of the others, be my guest =D.
 
 # Questions
 Any questions, please reach out to diegsan20@gmail.com
