@@ -14,15 +14,15 @@ year = 1998
 
 # Calculate age based only on year
 
-age = 2022 – year
+# age = 2022 – year
 
 # Adjust for month
 
-if month > 5 :
+# if month > 5 :
 
-    age = age - 1
-if month == 5 and day <= 5
+#     age = age - 1
+# if month == 5 and day <= 5
 
-    age = age - 1
+#     age = age - 1
 
-print('On 5 May 2022 I am age ' , age , years old')
+# print('On 5 May 2022 I am age ' , age , years old')
