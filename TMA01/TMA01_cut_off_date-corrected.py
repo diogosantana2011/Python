@@ -20,7 +20,6 @@ age = 2022 - year
 # Adjust for month
 if month > 5:
     age = age -1
-
 elif month == 5 and day > 5:
     age = age - 1
     
