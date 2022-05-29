@@ -21,4 +21,4 @@ for temperature in temperatures:
 
 # Output: mean, an int
 mean = total / length
-print('The mean of: ', temperatures ,'is', mean)    
+print('The mean of: ', temperatures ,'is', round(mean, 2))    
