@@ -23,4 +23,4 @@ for grade in student_results:
     elif grade == 'F':
         student_gpa = student_gpa + [0]
         
-print('From', student_results, 'the corresponding GPA is: ', student_gpa)
+print('From', student_results, 'the corresponding Grades are: ', student_gpa)
