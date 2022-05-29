@@ -7,8 +7,6 @@ student_results = ['C', 'C', 'A', 'B', 'D', 'F', 'F', 'F', 'W', 'F', 'W', 'F', '
 ## in the range of (0, n+1) where n is 4
 student_grades = []
 
-# Sub-problem: calculate grade based on 
-## input from list
 for grade in student_results:
     if grade == 'A': 
         student_grades = student_grades + [4]
@@ -21,8 +19,7 @@ for grade in student_results:
     elif grade == 'F':
         student_grades = student_grades + [0]
 
-# Sub-problem: compute sum of a list of ints(student_grades)
-## Average should not be taken from student_results, as it includes 'W' withdrawn
+# Sub-problem: compute sum of a list of ints    
 length = 0
 for item in student_grades:
     length = length + 1
@@ -41,4 +38,8 @@ for number in student_grades:
 
 # OUTPUT: compute mean of student_gpa   
 student_gpa = total / length
-print('The student GPA was: ', round(student_gpa, 2))
+print(f'''
+    The student results were: {student_results}
+    These resulted in grades: {student_grades}  
+    Which resulted in GPA: {round(student_gpa, 2)}
+    ''')
