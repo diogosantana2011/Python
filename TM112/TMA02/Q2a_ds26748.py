@@ -9,18 +9,18 @@ student_results = ['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', '
 
 # Output: a list of grades
 ## transformed to their respective grade value 
-student_gpa = []
+student_grades = []
 
 for grade in student_results:
     if grade == 'A': 
-        student_gpa = student_gpa + [4]
+        student_grades = student_grades + [4]
     elif grade == 'B':
-         student_gpa = student_gpa + [3]
+         student_grades = student_grades + [3]
     elif grade == 'C':
-        student_gpa = student_gpa + [2]
+        student_grades = student_grades + [2]
     elif grade == 'D':
-        student_gpa = student_gpa + [1]
+        student_grades = student_grades + [1]
     elif grade == 'F':
-        student_gpa = student_gpa + [0]
+        student_grades = student_grades + [0]
         
-print('From', student_results, 'the corresponding Grades are: ', student_gpa)
+print('From', student_results, 'the corresponding Grades are: ', student_grades)
