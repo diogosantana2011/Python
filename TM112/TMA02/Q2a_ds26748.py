@@ -5,6 +5,7 @@
 student_results = ['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', 'C']
 # Test result (expectation): [1, 4, 3, 3, 2, 1, 3, 0, 3, 2, 2]
 # Borderline input: ['W', 'F', 'F', 'F', 'W', 'F', 'F', 'F', 'W', 'F', 'W', 'F', 'F'] 
+# Test result (expectation): [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # Output: a list of grades
 ## transformed to their respective grade value 
