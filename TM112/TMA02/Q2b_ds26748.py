@@ -4,6 +4,7 @@
 # Input: a list of of whole positive numbers 
 student_results = ['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', 'C']
 #['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', 'C']
+# test: ['C', 'C', 'A', 'B', 'D', 'F', 'F', 'F', 'W', 'F', 'W', 'F', 'F']
 ## in the range of (0, n+1) where n is 4
 student_grades = []
 
