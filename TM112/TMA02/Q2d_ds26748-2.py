@@ -3,13 +3,8 @@
 ### the GPA rounded to 2 decimal places
 
 # Input: a list of grades, postive whole numbers
-# grade_marking = {'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
-# # student_results = ['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', 'C']
-grades = ['D', 'A', 'B', 'B', 'C', 'D', 'B', 'F', 'W', 'B', 'W', 'C', 'C']
+grades = ['C', 'C', 'A', 'B', 'D', 'F', 'F', 'F', 'W', 'F', 'W', 'F', 'F']
 grade_marking = {'A': 4, 'B': 3, 'C': 2, 'D': 1, 'F': 0}
-# points = 0
-# length = len(grades)
-student_grades = []
 points = 0 
 
 for grade in grades:
