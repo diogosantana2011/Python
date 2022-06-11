@@ -7,7 +7,7 @@ vscode/
 # IDE and mac files
 .vscode
 .DS_Store
-
+TM112/TMA02/__pycache__
 # Fixtures
 
 # Tests generated files
