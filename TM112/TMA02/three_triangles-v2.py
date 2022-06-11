@@ -10,6 +10,11 @@ numshapesinput = int(input('Please enter numnber of triangles to draw: '))
 # Remove duplicate code:
 ## Add draw triangle funct
 def draw_triangle(numshapes):
+    f"""
+        This function creates a triangle 
+        at position-x: 0, position-y: 0
+        of 40 units length and 120 left angle.
+    """
     for sides in range(0, numshapes):
         forward(40)
         left(120)
