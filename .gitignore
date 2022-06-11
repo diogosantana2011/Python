@@ -1,0 +1,15 @@
+# Logs
+
+# Dependency directories
+node_modules
+vscode/
+
+# IDE and mac files
+.vscode
+.DS_Store
+
+# Fixtures
+
+# Tests generated files
+
+# Dump
