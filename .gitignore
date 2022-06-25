@@ -1,5 +1,6 @@
 # Logs
-
+metrics_scripts/extracted-json-data
+metrics_scripts/logs
 # Dependency directories
 node_modules
 vscode/
@@ -17,4 +18,3 @@ TM112/TM112_22D_TMA02_Q5_files/__pycache__
 
 # Misc
 TM112/text_and_python-week-10
-metrics_scripts/logs/operation_output.log
