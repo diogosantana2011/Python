@@ -2,9 +2,9 @@
 
 """
 This flashcard program allows the user to ask for a glossary entry.
-In response, the program randomly picks an entry from all glossary
-entries. It shows the entry. After the user presses return, the
-program shows the definition of that particular entry.
+In response, the program randomly picks an entry or definition from all glossary
+entries. Based on random selection, it will either show the entry or definition. 
+After the user presses return, the program shows the definition of that particular entry.
 The user can repeatedly ask for an entry and also
 has the option to quit the program instead of seeing
 another entry.
@@ -12,21 +12,18 @@ another entry.
 
 from random import *
 
-# *** Modify the body of the show_flashcard function so that it
-# implements your algorithm from part i. Also modify the docstring
-# for the program and the docstring for the function, to take 
-# account of the changes and their effect. ***
-
 def show_flashcard():
     """ Show the user a random key/value and 
         when the user presses return; display its 
-        respective key/value.        
+        respective key/value counterpart.        
     """
     # Random selection
     selection = randint(0, 10) 
     random_key = choice(list(glossary))
     random_value = glossary.get(random_key)
     
+    # Conditional if clause
+    # to pick key/value
     if selection in range(0, 5):
         print('What is the definition for the entry -', random_key)
         input('Press return to see the definition: ')
@@ -37,13 +34,11 @@ def show_flashcard():
         print(random_key)
 
 # Set up the glossary
-
 glossary = {'word1':'definition1',
             'word2':'definition2',
             'word3':'definition3'}
 
 # The interactive loop
-
 exit = False
 while not exit:
     user_input = input('Enter s to show a flashcard and q to quit: ')
