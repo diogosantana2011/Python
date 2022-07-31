@@ -1,0 +1,6 @@
+ASCII, A standard for encoding character data. 
+Boolean algebra, " a mathematical representation that is used to manipulate 1 (True) and 0 (False) values according to the operators AND, OR and NOT. It allows logic expressions to be manipulated in a way similar to arithmetic expressions. Named after its inventor George Boole in 1847. "
+Boolean expression, " an expression using Boolean values, variables and operators that can be evaluated to give a value of 1 (True) or 0 (False). "
+bit error, a bit in a data stream that has been altered due to noise.
+De Morgan’s laws, A pair of laws that shows the equivalence of Boolean algebraic expressions. 
+electrical, " pertaining to the flow of electrons through metal conductors, such as copper wires. "
