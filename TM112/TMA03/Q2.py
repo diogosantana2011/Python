@@ -26,20 +26,14 @@ def show_flashcard():
     print('Define: ', random_key)
     input('Press return to see the definition')
     print(glossary[random_key])
-    #random_value = choice(list(glossary.values()))
-    #assert(random_key not in random_value)
-    #print(glossary[random_value])
-    #print('Define: ', random_value)
-    #print(choice(list(glossary.values())))
 
 # Set up the glossary
-
 glossary = {'word1':'definition1',
             'word2':'definition2',
             'word3':'definition3'}
 
-# The interactive loop
 
+# The interactive loop
 exit = False
 while not exit:
     user_input = input('Enter s to show a flashcard and q to quit: ')

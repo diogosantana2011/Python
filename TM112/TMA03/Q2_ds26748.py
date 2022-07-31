@@ -18,19 +18,23 @@ from random import *
 # account of the changes and their effect. ***
 
 def show_flashcard():
-    """ Show the user a random key or value from glossary. 
-        Show the value or key, when the user presses return.    
+    """ Show the user a random key/value and 
+        when the user presses return; display its 
+        respective key/value.        
     """
-     
+    # Random selection
+    selection = randint(0, 10) 
     random_key = choice(list(glossary))
-    print('Define: ', random_key)
-    input('Press return to see the definition')
-    print(glossary[random_key])
-
-    # random_value = choice(list(glossary.values()))
-    # print(glossary[random_value])
-    # print('Define: ', random_value)
-    #print(choice(list(glossary.values())))
+    random_value = glossary.get(random_key)
+    
+    if selection in range(0, 5):
+        print('What is the definition for the entry -', random_key)
+        input('Press return to see the definition: ')
+        print(glossary[random_key])
+    else:
+        print('What is the entry for the definition -', random_value)
+        input('Press return to see the entry: ')
+        print(random_key)
 
 # Set up the glossary
 
