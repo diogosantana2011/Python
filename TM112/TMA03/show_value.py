@@ -15,4 +15,9 @@ def show_value(key, dictionary):
     if key not in dictionary:
         print(str(key) + ' is not a valid key.')
     else:
-        print(dictionary.get(key))
+        print('The defenition for key ' + str(key) + ' is', dictionary.get(key))
+        
+show_value(1, test_dictionary)
+show_value(5, test_dictionary)
+show_value(3, test_dictionary)
+show_value(25, test_dictionary)
