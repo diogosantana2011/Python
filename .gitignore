@@ -18,3 +18,6 @@ TM112/TM112_22D_TMA02_Q5_files/__pycache__
 
 # Misc
 TM112/text_and_python-week-10
+.idea
+.pytest_cache
+__pycache__
