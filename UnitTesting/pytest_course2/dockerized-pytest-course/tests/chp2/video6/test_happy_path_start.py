@@ -26,10 +26,19 @@ def test_csv_reader_data_contents(process_data):
     Happy Path Test to examine that each row
     has the appropriate data type per field
     """
-    # data = process_data
-
+    data = process_data
     # Check row types
+    for row in data:
+        assert(isinstance(row['Country'], str))
+        assert(isinstance(row['City'], str))
+        assert(isinstance(row['State_Or_Province'], str))
+        assert(isinstance(row['Lat'], float))
+        assert(isinstance(row['Long'], float))
+        assert(isinstance(row['Altitude'], float))
 
+    assert len(data) == 180
+    assert data[0]['Country'] == 'Andorra'
+    assert data[179]['Country'] == 'United States'
     # Basic data checks
 
 
