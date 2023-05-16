@@ -105,11 +105,14 @@ def main():
             log(f'Total logins for Operation: {sum_of_values}', f'total logins: {sum_of_values}')
                             
             break
-        except (TypeError, ValueError, NameError, UnboundLocalError): 
+        except (TypeError, ValueError, NameError, UnboundLocalError, KeyboardInterrupt): 
+            if (KeyboardInterrupt):
+                print('\nClosiinnnggg!!!')
+                logging.warning('\nClosiinnnggg!!!')
             print('This is the incorrect date string format. It should be YYYY-MM-DD\n')
             logging.error('Error: This is the incorrect date string format. It should be YYYY-MM-DD\n')
             log(f'Error on date format. Retry!', f'Incorrect format. Forced retry')
-            continue
+            continue  
         finally:
             # CHECK IF CURRENT DIRECTORY EXISTS & CREATE IF NOT
             path = os.getcwd()
@@ -139,14 +142,7 @@ def main():
                     json.dump(json_response['data'], write_file, indent=4, sort_keys=True)
                 print(f'File Saved in folder {created_folder}!')   
                 logging.info(f'File Saved in folder {created_folder}!\n')
-                log(f'{my_created_file} being saved in folder!', f'File {my_created_file} saved!')
-            
-            # TODO:             
-            # 3. FIX ERROR ON BREAK/CONTINUE CLAUSE WHEN INCORRECT INPUT FORMAT     
+                log(f'{my_created_file} being saved in folder!', f'File {my_created_file} saved!')  
 
 if __name__ == '__main__': 
-    try:
-        main()
-    except KeyboardInterrupt:
-        print('\nClosiinnnggg!!!')
-        logging.warning('\nClosiinnnggg!!!')
+    main()
