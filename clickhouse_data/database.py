@@ -20,3 +20,11 @@ def client():
     except ConnectionRefusedError as err:
         print('Error \n' + err)
         return
+    
+def execute_query(query):
+    try:
+        db_query = client().execute(query)
+        return db_query
+    except ConnectionRefusedError as err:
+        print('Error \n' + err)
+        return       
