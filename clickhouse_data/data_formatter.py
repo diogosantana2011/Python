@@ -26,6 +26,7 @@ print(
     # database.execute_query("SHOW TABLES FROM system NOT LIKE '%s%'"),
     # database.execute_query("SHOW TABLES FROM system LIMIT 2")
     # database.execute_query('SHOW COLUMNS FROM aggregate_function_combinators') # Returns empty list []
+    database.execute_query()
 )
 
 # INSERT
