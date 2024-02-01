@@ -1,5 +1,6 @@
 FROM python:3.7.6-buster
-MAINTAINER python_student
+LABEL key="python_student" 
+# python_student
 
 RUN mkdir /pytest_project/
 COPY ./test-requirements.txt /pytest_project/
