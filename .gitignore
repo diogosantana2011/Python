@@ -1,6 +1,7 @@
 # Logs
 metrics_scripts/extracted-json-data
 metrics_scripts/logs
+metrics_scripts/config.py
 # Dependency directories
 node_modules
 vscode/

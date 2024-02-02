@@ -9,23 +9,26 @@ import json
 import datetime, os
 from pathlib import Path
 import logging , logging.handlers 
-
-
-# ADD LOGS TO MONGO DB VS .LOG FILES
+import config
 import pymongo
 from pymongo import ASCENDING
 
 # MONGO CONNECTION
-my_client = pymongo.MongoClient('mongodb://localhost:27017')
-mydb = my_client['diogo_metrics-scripts-logs']
+my_client = pymongo.MongoClient(config.mongo_url)
+mydb = my_client[config.mongo_client]
 db_list = my_client.list_database_names()
+mycol = mydb[config.mongo_metrics_col]
+collist = mydb.list_collection_names()
+
+# Alert Colors
+# TODO: Confirm how to stop color after script completion
+# red = "\x1B[31m"    # to highlight messages
+# green = '\x1b[32m'
 
 if 'mydatabase' in db_list:
     print('Database exists!')
     logging.info('Database already exists!')
     
-mycol = mydb['metrics_logs']
-collist = mydb.list_collection_names()
 if 'metrics_logs' in collist:
     print("The collection exists.")
     logging.info('Collection already exists!')
@@ -43,18 +46,8 @@ def log(msg, operation):
     # https://github.com/log4mongo/log4mongo-python
     entry['operation'] = operation
     log_collection.insert_one(entry)
-        
-def main(): 
-    # LOGGING
-    fmtstr = '%(asctime)s: %(levelname)s: %(funcName)s: Line: %(lineno)d %(message)s' 
-    datestr = '%d/%m/%Y %I:%M:%S %p'
-    logging.basicConfig(
-        level=logging.DEBUG,
-        filename='logs/operation_output.log', 
-        filemode='w+',
-        format=fmtstr,
-        datefmt=datestr
-    )
+
+def checkIsDir():
     path = os.getcwd()
     logs_folder = '/logs'
     created_logs_folder = path + logs_folder
@@ -67,7 +60,21 @@ def main():
     elif os.path.isdir(created_logs_folder):
         print('Logs folder already exists.')
         logging.info('Logs folder already exists! Writting in existing file!')
-        log('Logs folder already exists. Writting in existing file', 'Check if DB Existing')
+        log('Logs folder already exists. Writting in existing file', 'Check if DB Existing')      
+
+def main(): 
+    # LOGGING
+    fmtstr = '%(asctime)s: %(levelname)s: %(funcName)s: Line: %(lineno)d %(message)s' 
+    datestr = '%d/%m/%Y %I:%M:%S %p'
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filename='logs/operation_output.log', 
+        filemode='w+',
+        format=fmtstr,
+        datefmt=datestr
+    )
+
+    checkIsDir()
         
     while True:
         try:            
@@ -105,10 +112,7 @@ def main():
             log(f'Total logins for Operation: {sum_of_values}', f'total logins: {sum_of_values}')
                             
             break
-        except (TypeError, ValueError, NameError, UnboundLocalError, KeyboardInterrupt): 
-            if (KeyboardInterrupt):
-                print('\nClosiinnnggg!!!')
-                logging.warning('\nClosiinnnggg!!!')
+        except (TypeError, ValueError, NameError, UnboundLocalError, KeyboardInterrupt):
             print('This is the incorrect date string format. It should be YYYY-MM-DD\n')
             logging.error('Error: This is the incorrect date string format. It should be YYYY-MM-DD\n')
             log(f'Error on date format. Retry!', f'Incorrect format. Forced retry')
@@ -123,7 +127,7 @@ def main():
                 os.makedirs(created_folder, mode=0o777, exist_ok=False)
                 print('Folder has been created.')
                 logging.info('Folder has been created.')
-                log(f'{created_folder} has been created', '{created_folder} created!')
+                log(f'{created_folder} has been created', f'{created_folder} created!')
             else:
                 print('Folder already exists.')
                 logging.warning('Folder already exists.')
@@ -135,7 +139,7 @@ def main():
                             
             if Path(f'{my_created_file}').is_file():
                 print('File already exists.')
-                logging.warning('File already exists.', 'Folder exists')
+                logging.warning('File already exists.')
                 log(f'{my_created_file} already exists', 'File already exists. Skipping!')
             else:
                 with open(f'{my_created_file}', 'w+') as write_file:           
