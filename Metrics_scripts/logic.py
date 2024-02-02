@@ -3,6 +3,11 @@ from pathlib import Path
 from genericpath import exists
 from pymongo import ASCENDING
 
+# TODO: 
+# ADD IF CLAUSE FOR WHICH USER TYPE (ADMIN, WH, MKT)
+# PASS PARAMS TO mainLogicApi(adm, mkt, wh) 
+# BASED ON THIS CALL ON DIFFERENT URLS, INSTEAD OF 3 SCRIPTS
+
 # MONGO CONNECTION
 my_client = pymongo.MongoClient(config.mongo_url)
 mydb = my_client[config.mongo_client]
