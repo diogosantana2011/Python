@@ -6,7 +6,8 @@ from pymongo import ASCENDING
 # TODO: 
 # ADD IF CLAUSE FOR WHICH USER TYPE (ADMIN, WH, MKT)
 # PASS PARAMS TO mainLogicApi(adm, mkt, wh) 
-# BASED ON THIS CALL ON DIFFERENT URLS, INSTEAD OF 3 SCRIPTS
+# BASED ON THIS CALL ON DIFFERENT URLS, INSTEAD OF 3 BIG FILES
+# ONE FILE FOR SHARED LOGIC & USED BY 3 SCRIPTS
 
 # MONGO CONNECTION
 my_client = pymongo.MongoClient(config.mongo_url)
@@ -43,7 +44,7 @@ def log(msg, operation):
     entry['operation'] = operation
     log_collection.insert_one(entry)
 
-def mainLogicApi():
+def mainLogicApi(userType):
     # LOGGING
     fmtstr = '%(asctime)s: %(levelname)s: %(funcName)s: Line: %(lineno)d %(message)s' 
     datestr = '%d/%m/%Y %I:%M:%S %p'
@@ -54,6 +55,8 @@ def mainLogicApi():
         format=fmtstr,
         datefmt=datestr
     )
+
+    checkIsDir()
     
     while True:
         try:            
@@ -68,10 +71,21 @@ def mainLogicApi():
             date2 = str(datetime.date(year, month, day))
             log(f'Start date selected is: {date1}', f'Logged {date2} date')
             
-            # URL CALL
-            url = f'https://lb.mp.playtech.com/3rdparty/metrics/i_logins?startDate={date1}&endDate={date2}'
-            logging.info(url)
-            log(f'Called on {url}', f'{url} called')
+            if userType == 'ADMIN':
+                # URL CALL
+                url = f'{config.metrics_api}/i_logins?startDate={date1}&endDate={date2}'
+                logging.info(url)
+                log(f'Called on {url}', f'{url} called')
+            elif userType == 'MKT':
+                # URL CALL
+                url = f'{config.metrics_api}/l_logins?startDate={date1}&endDate={date2}'
+                logging.info(url)
+                log(f'Called on {url}', f'{url} called')
+            elif userType == 'WH':
+                # URL CALL
+                url = f'{config.metrics_api}/d_logins?startDate={date1}&endDate={date2}'
+                logging.info(url)
+                log(f'Called on {url}', f'{url} called')
     
             get_request = requests.get(url)
             response = get_request.content

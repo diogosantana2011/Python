@@ -11,8 +11,7 @@ import logic
 # green = '\x1b[32m'
 
 def main(): 
-    logic.checkIsDir()
-    logic.mainLogicApi()
+    logic.mainLogicApi('ADMIN')
     
 if __name__ == '__main__': 
     main()
