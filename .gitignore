@@ -22,3 +22,7 @@ TM112/text_and_python-week-10
 .idea
 .pytest_cache
 __pycache__
+
+# Robot
+robot-framework/log.html
+robot-framework/output.xml
