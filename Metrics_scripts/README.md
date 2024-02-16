@@ -79,5 +79,23 @@ Best way to figure which one is to simply navigate to folder where its install (
 Running it, will show you Pythons IDE, which you can use if you want. The IDE file path will display an .exe file, such as 'C:/python3.9/python.exe'
 Therefore to start python you'd use 'python {script_name}'.
 
+# Config file
+
+Configuration file must can be added as simple 'config.py' within root of 'metrics_scripts' for script to successfully run.
+
+Within you can set whichever strings you would like for mentioned variables within main logic.
+
+Example:
+
+```
+mongo_url = 'mongodb://{url}'
+mongo_client = 'CLIENT_NAME'
+mongo_metrics_col = 'METRICS_COLLECTION'
+metrics_api = '{URL}'
+metrics_api_dev='{TEST_ENV_URL}'
+metrics_qs = '{METRICS_USER_METRIC_CODE}'
+export_folder = '{EXPORT_JSON_FOLDER}'
+```
+
 # Questions
 Any questions, please reach out to diegsan20@gmail.com
