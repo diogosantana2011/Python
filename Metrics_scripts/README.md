@@ -95,7 +95,13 @@ metrics_api = '{URL}'
 metrics_api_dev='{TEST_ENV_URL}'
 metrics_qs = '{METRICS_USER_METRIC_CODE}'
 export_folder = '{EXPORT_JSON_FOLDER}'
+logs_filename='{folder/file_name_for_logs}'
 ```
+
+# Requirements
+Requirement.txt file in root, includes librares I exported from ``pip freeze > requirements.txt`` but modified to remove some (as I have more things installed and script requires). Your IDE's linter should prompt to which are not available, and via pip, you can install whichever packages required.
+
+Example: ``pip install {package_name}`` where package can be 'pymongo', 'requests' etc.
 
 # Questions
 Any questions, please reach out to diegsan20@gmail.com
