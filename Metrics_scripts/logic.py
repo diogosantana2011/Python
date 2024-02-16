@@ -8,7 +8,7 @@ def mainLogicApi(userType):
     datestr = '%d/%m/%Y %I:%M:%S %p'
     logging.basicConfig(
         level=logging.DEBUG,
-        filename='logs/operation_output.log', 
+        filename=config.logs_filename, 
         filemode='w+',
         format=fmtstr,
         datefmt=datestr
