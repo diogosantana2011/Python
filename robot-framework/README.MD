@@ -16,3 +16,9 @@ To run all tests within /tests/ folder, please run:
 
 # Env variables
 Refer to variables docs on [Robot - Variables:](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#using-variables)
+
+# Reports
+
+Please see below example of a generated report.
+
+![Report](./report.png)
