@@ -2,13 +2,6 @@ import logging , logging.handlers , datetime , os , json , requests , config
 from pathlib import Path
 from utils import db_trace, checkIsDir
 
-#
-# TODO: 
-# FIX OBJECT CREATION DB;
-# INSTEAD OF VARIOUS DB_TRACES
-# ADD 1 WITH OPERATION RESULT
-# 
-
 def mainLogicApi(userType):
     # LOGGING
     fmtstr = '%(asctime)s: %(levelname)s: %(funcName)s: Line: %(lineno)d %(message)s' 

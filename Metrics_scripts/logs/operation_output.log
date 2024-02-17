@@ -1,8 +1,8 @@
-17/02/2024 03:37:08 PM: INFO: checkIsDir: Line: 37 Logs folder already exists! Writting in existing file!
-17/02/2024 03:37:14 PM: INFO: mainLogicApi: Line: 45 https://lb.mp.playtech.com/3rdparty/metrics/l_logins?startDate=2022-01-01&endDate=2022-01-28
-17/02/2024 03:37:14 PM: DEBUG: _new_conn: Line: 1053 Starting new HTTPS connection (1): lb.mp.playtech.com:443
-17/02/2024 03:37:15 PM: DEBUG: _make_request: Line: 547 https://lb.mp.playtech.com:443 "GET /3rdparty/metrics/l_logins?startDate=2022-01-01&endDate=2022-01-28 HTTP/1.1" 200 None
-17/02/2024 03:37:15 PM: INFO: mainLogicApi: Line: 67 The total logins for requested dates: 2929
-17/02/2024 03:37:15 PM: WARNING: mainLogicApi: Line: 86 Folder already exists.
-17/02/2024 03:37:15 PM: INFO: mainLogicApi: Line: 101 File Saved in folder /Users/diogosantana/Development/Python/Metrics_scripts/extracted-json-data!
+17/02/2024 03:47:28 PM: INFO: checkIsDir: Line: 37 Logs folder already exists! Writting in existing file!
+17/02/2024 03:47:37 PM: INFO: mainLogicApi: Line: 50 https://lb.mp.playtech.com/3rdparty/metrics/d_logins?startDate=2023-01-01&endDate=2023-01-31
+17/02/2024 03:47:37 PM: DEBUG: _new_conn: Line: 1053 Starting new HTTPS connection (1): lb.mp.playtech.com:443
+17/02/2024 03:47:38 PM: DEBUG: _make_request: Line: 547 https://lb.mp.playtech.com:443 "GET /3rdparty/metrics/d_logins?startDate=2023-01-01&endDate=2023-01-31 HTTP/1.1" 200 None
+17/02/2024 03:47:38 PM: INFO: mainLogicApi: Line: 67 The total logins for requested dates: 370
+17/02/2024 03:47:38 PM: WARNING: mainLogicApi: Line: 86 Folder already exists.
+17/02/2024 03:47:38 PM: INFO: mainLogicApi: Line: 101 File Saved in folder /Users/diogosantana/Development/Python/Metrics_scripts/extracted-json-data!
 

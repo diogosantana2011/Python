@@ -2,6 +2,14 @@ from pymongo import ASCENDING
 import config, pymongo, datetime, os, logging, logging.handlers
 
 # MONGO CONNECTION
+
+#
+# TODO: 
+# FIX OBJECT CREATION DB;
+# INSTEAD OF VARIOUS DB_TRACES
+# ADD 1 WITH OPERATION RESULT vs CURRENT 7!!
+# 
+
 my_client = pymongo.MongoClient(config.mongo_url)
 mydb = my_client[config.mongo_client]
 db_list = my_client.list_database_names()
@@ -15,9 +23,6 @@ def db_trace(msg, operation):
     entry ={}
     entry['timestamp'] = datetime.datetime.utcnow()
     entry['msg'] = msg
-    
-    # MAKE 'OPERATION' OBJECT CONTAINING INFORMATION VS DUPLICATE ENTRIES
-    # https://github.com/log4mongo/log4mongo-python
     entry['operation'] = operation
     log_collection.insert_one(entry)
 
