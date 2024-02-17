@@ -2,6 +2,13 @@ import logging , logging.handlers , datetime , os , json , requests , config
 from pathlib import Path
 from utils import db_trace, checkIsDir
 
+#
+# TODO: 
+# FIX OBJECT CREATION DB;
+# INSTEAD OF VARIOUS DB_TRACES
+# ADD 1 WITH OPERATION RESULT
+# 
+
 def mainLogicApi(userType):
     # LOGGING
     fmtstr = '%(asctime)s: %(levelname)s: %(funcName)s: Line: %(lineno)d %(message)s' 
@@ -20,28 +27,28 @@ def mainLogicApi(userType):
         date = input('Enter an startDate format(YYYY-MM-DD):\n')
         year, month, day = map(int, date.split('-'))
         date1 = str(datetime.date(year, month, day))
-        db_trace(f'Start date selected is: {date1}', f'Logged {date1} date')
+        db_trace(f'Start date selected is: {date1}', f'Star date: {date1}')
         
         date = input('Enter an endDate format(YYYY-MM-DD):\n')
         year, month, day = map(int, date.split('-'))
         date2 = str(datetime.date(year, month, day))
-        db_trace(f'Start date selected is: {date1}', f'Logged {date2} date')
+        db_trace(f'End date selected is: {date1}', f'End date: {date2}')
         
         if userType == 'ADMIN':
             # URL CALL
             url = f'{config.metrics_api}/i_logins?startDate={date1}&endDate={date2}'
             logging.info(url)
-            db_trace(f'Called on {url}', f'{url} called')
+            db_trace(f'Called on {url}', f'Request made to: {url}')
         elif userType == 'MKT':
             # URL CALL
             url = f'{config.metrics_api}/l_logins?startDate={date1}&endDate={date2}'
             logging.info(url)
-            db_trace(f'Called on {url}', f'{url} called')
+            db_trace(f'Called on {url}', f'Request made to: {url}')
         elif userType == 'WH':
             # URL CALL
             url = f'{config.metrics_api}/d_logins?startDate={date1}&endDate={date2}'
             logging.info(url)
-            db_trace(f'Called on {url}', f'{url} called')
+            db_trace(f'Called on {url}', f'Request made to: {url}')
 
         get_request = requests.get(url)
         response = get_request.content
