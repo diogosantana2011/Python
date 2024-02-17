@@ -2,22 +2,23 @@
 
 Playground setup for Robot Framework playaround.
 
-# Install
+## Install
 
 Via pip, install:
 
 ``pip install robotframework``
 
-# Commands
+## Commands
 
 To run all tests within /tests/ folder, please run:
 
 ``python3 -m robot tests/**`` OR ``robot tests/**``
 
-# Env variables
+## Env variables
+
 Refer to variables docs on [Robot - Variables:](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#using-variables)
 
-# Reports
+## Reports
 
 Please see below example of a generated report.
 
