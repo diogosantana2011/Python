@@ -26,6 +26,7 @@ __pycache__
 # Robot
 robot-framework/log.html
 robot-framework/output.xml
+robot-framework/results
 
 # venv
 venv/lib
