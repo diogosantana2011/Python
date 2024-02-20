@@ -80,8 +80,7 @@ def mainLogicApi(userType):
                 db_trace(f'{created_folder} already exists', f'{created_folder} already exists')
                 
             # 2. If file exists display that file for dates
-            
-            my_created_file = f'{created_folder}/metrics_login-DATA-{date1}-TO-{date2}.json'
+            my_created_file = f'{created_folder}/metrics_login-{userType}-DATA-{date1}-TO-{date2}.json'
                             
             if Path(f'{my_created_file}').is_file():
                 print('File already exists.')
