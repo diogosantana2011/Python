@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from datetime import timezone
 import os, signal, threading, random, decimal, uuid, datetime, random
 
 payment_data={}
@@ -91,7 +92,7 @@ class MockServer:
                     "depositAddress": "-"
                 })
         
-        ## NETELLER
+        ## NETELLER ##
         # DEPOSIT
         @self.app.route('/cashier/neteller/deposit', methods=['POST'])
         def deposit_neteller():
@@ -190,16 +191,35 @@ class MockServer:
         # PAYMENT HANDLE
         @self.app.route('/paymenthub/v1/paymenthandles', methods=['POST'])
         def neteller_payment_handle():
+            """
+            Handle creation of a payment handle for Neteller.
+            Receives payment information and returns a response with a new payment handle token.
+            Args:
+                None?
+            Returns:
+                JSON: Response with a new payment handle token and payment details.
+            """
+            # Constants
+            RETURN_LINKS = [
+                {"rel": "on_completed", "href": "https://jenkins.3et.com/manageFunding/neteller/success"},
+                {"rel": "on_failed", "href": "https://jenkins.3et.com/manageFunding/neteller/error"},
+                {"rel": "default", "href": "https://jenkins.3et.com/manageFunding"}
+            ]
             received_payload = request.json
+            expected_keys = ['merchantRefNum', 'transactionType', 'neteller', 'paymentType', 'amount', 'currencyCode',
+                    'customerIp', 'billingDetails', 'returnLinks']
+            # Generate UUIDs
             neteller_uuid = uuid.uuid4()
             payment_handle_token = uuid.uuid4()
-            now = datetime.datetime.utcnow()
-            txn_time = now.replace(microsecond=0).isoformat() + "Z"
-            updated_time = txn_time
-            status_time = txn_time
-            expected_keys = ['merchantRefNum', 'transactionType', 'neteller', 'paymentType', 'amount', 'currencyCode',
-                     'customerIp', 'billingDetails', 'returnLinks']
+            # Get current time (UTC)
+            now_utc = datetime.datetime.now(timezone.utc)
+            formatted_time = now_utc.strftime('%Y-%m-%dT%H:%M:%SZ')
             
+            # Validate payload keys
+            if not received_payload or not all(key in received_payload for key in expected_keys):
+                return jsonify({"success": False, "error": "Invalid payload"}), 400
+            
+            # Create response
             response={
                 "id": neteller_uuid,
                 "paymentType":"NETELLER",
@@ -223,7 +243,7 @@ class MockServer:
                 "customerIp":received_payload['customerIp'],
                 "timeToLiveSeconds": random.randint(111, 999),
                 "gatewayResponse":{
-                    "orderId": f"ORD_${uuid.uuid4()}",
+                    "orderId": f"ORD_{uuid.uuid4()}",
                     "totalAmount":3599,
                     "currency": received_payload['currencyCode'],
                     "status":"pending",
@@ -235,23 +255,10 @@ class MockServer:
                     "detail1Description": received_payload['neteller']['detail1Description'],
                     "detail1Text":received_payload['neteller']['detail1Text']
                 },
-                "returnLinks":[
-                    {
-                        "rel": "on_completed",
-                        "href": "https://jenkins.3et.com/manageFunding/neteller/success"
-                    },
-                    {
-                        "rel": "on_failed",
-                        "href": "https://jenkins.3et.com/manageFunding/neteller/error"
-                    },
-                    {
-                        "rel": "default",
-                        "href": "https://jenkins.3et.com/manageFunding"
-                    }
-                ],
-                "txnTime": txn_time,
-                "updatedTime": updated_time,
-                "statusTime": status_time,
+                "returnLinks":RETURN_LINKS,
+                "txnTime": formatted_time,
+                "updatedTime": formatted_time,
+                "statusTime": formatted_time,
                 "links":[
                     {
                         "rel":"redirect_payment",
@@ -259,11 +266,7 @@ class MockServer:
                     }
                 ]
             }
-
-            if not received_payload or not all(key in received_payload for key in expected_keys):
-                return jsonify({"success": False, "error": "Invalid payload"}), 400
-            else:
-                return jsonify(response)
+            return jsonify(response), 200
 
     # SHUTDOWN
     def send_shutdown_response(self):
