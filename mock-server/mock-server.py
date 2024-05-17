@@ -3,6 +3,7 @@ from datetime import timezone
 import os, signal, threading, random, decimal, uuid, datetime, random
 
 payment_data={}
+payment_handles={}
 
 class MockServer:
     def __init__(self, port=5000):
@@ -244,7 +245,7 @@ class MockServer:
                 "timeToLiveSeconds": random.randint(111, 999),
                 "gatewayResponse":{
                     "orderId": f"ORD_{uuid.uuid4()}",
-                    "totalAmount":3599,
+                    "totalAmount":received_payload['amount'],
                     "currency": received_payload['currencyCode'],
                     "status":"pending",
                     "lang":"en_US",
@@ -266,7 +267,24 @@ class MockServer:
                     }
                 ]
             }
-            return jsonify(response), 200
+            # Save payment_handle_details
+            payment_handles[str(payment_handle_token)] = {
+                "internalId": str(payment_handle_token),
+                "amount": received_payload['amount'],
+                "email": received_payload['neteller']['consumerId'],
+                "txnTime": formatted_time
+            }
+            return jsonify(), 200
+
+        # GET PAYMENT HANDLE
+        @self.app.route('/paymenthub/v1/paymenthandles/<string:payment_handle_token>', methods=['GET'])
+        def neteller_get_payment_handle(payment_handle_token):
+            for handle_id, handle_details in payment_handles.items():
+                if handle_details['internalId'] == payment_handle_token:
+                    return jsonify(handle_details), 200
+                else:
+                    return jsonify(handle_details), 200
+            return jsonify({"error": "Payment handle not found", "payment_handles": payment_handles}), 200
 
     # SHUTDOWN
     def send_shutdown_response(self):
