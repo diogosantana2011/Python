@@ -1,0 +1,1385 @@
+[
+   {
+      "marketPeriod":"FULL_EVENT",
+      "marketTypes":[
+         {
+            "marketType":"ONE_X_TWO",
+            "marketName":"1x2",
+            "markets":[
+               {
+                  "id":43794697,
+                  "name":"1x2",
+                  "type":"ONE_X_TWO",
+                  "marketInternalType":"ONE_X_TWO",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-19T17:12:56.611Z",
+                  "sequence":20,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"HANDICAP",
+            "marketName":"HDP",
+            "markets":[
+               {
+                  "id":43794868,
+                  "name":"HDP (-0.50)",
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"POINT_SPREAD",
+                  "handicap":-0.5,
+                  "formattedHandicap":"-0.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-22T06:30:10.777Z",
+                  "sequence":2,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794904,
+                  "name":"HDP (-0.25)",
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"ASIAN_HANDICAP",
+                  "handicap":-0.25,
+                  "formattedHandicap":"-0.25",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T15:13:55.434Z",
+                  "sequence":1,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794853,
+                  "name":"HDP (0.00)",
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"POINT_SPREAD",
+                  "handicap":0,
+                  "formattedHandicap":"0.00",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-22T06:30:10.778Z",
+                  "sequence":3,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL",
+            "marketName":"Total",
+            "markets":[
+               {
+                  "id":43794889,
+                  "name":"Total 2.00",
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"POINT_TOTAL",
+                  "handicap":2,
+                  "formattedHandicap":"2.0",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-22T06:30:10.777Z",
+                  "sequence":12,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794856,
+                  "name":"Total 2.25",
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"ASIAN_HANDICAP",
+                  "handicap":2.25,
+                  "formattedHandicap":"2 / 2.5",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T15:13:55.427Z",
+                  "sequence":11,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794865,
+                  "name":"Total 2.50",
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"POINT_TOTAL",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.5",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-22T06:30:10.770Z",
+                  "sequence":13,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"BOTH_SCORE",
+            "marketName":"Both Score",
+            "markets":[
+               {
+                  "id":43794694,
+                  "name":"Both Score",
+                  "type":"BOTH_SCORE",
+                  "marketInternalType":"BOTH_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":42,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_HOME",
+            "marketName":"Total Goals Home",
+            "markets":[
+               {
+                  "id":43794835,
+                  "name":"Team Goals VPS Vaasa",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":0.5,
+                  "formattedHandicap":"0.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":54,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794823,
+                  "name":"Team Goals VPS Vaasa",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":49,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794838,
+                  "name":"Team Goals VPS Vaasa",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":53,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_AWAY",
+            "marketName":"Total Goals Away",
+            "markets":[
+               {
+                  "id":43794799,
+                  "name":"Team Goals KuPS",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":0.5,
+                  "formattedHandicap":"0.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":47,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794793,
+                  "name":"Team Goals KuPS",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":45,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794805,
+                  "name":"Team Goals KuPS",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":48,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"HALF_FULL_TIME",
+            "marketName":"Half Time / Full Time",
+            "markets":[
+               {
+                  "id":43794673,
+                  "name":"Half Time / Full Time",
+                  "type":"HALF_FULL_TIME",
+                  "marketInternalType":"HALF_FULL_TIME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":41,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"DOUBLE_CHANCE",
+            "marketName":"Double Chance",
+            "markets":[
+               {
+                  "id":43794817,
+                  "name":"Double Chance",
+                  "type":"DOUBLE_CHANCE",
+                  "marketInternalType":"DOUBLE_CHANCE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":50,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORRECT_SCORE",
+            "marketName":"Correct Score",
+            "markets":[
+               {
+                  "id":43794841,
+                  "name":"Correct Score",
+                  "type":"CORRECT_SCORE",
+                  "marketInternalType":"CORRECT_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":51,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"THREE_WAY_AND_TOTAL",
+            "marketName":"1X2 & Goals O/U",
+            "markets":[
+               {
+                  "id":43794646,
+                  "name":"1X2 & Goals O/U",
+                  "type":"THREE_WAY_AND_TOTAL",
+                  "marketInternalType":"THREE_WAY_AND_TOTAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":32,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794649,
+                  "name":"1X2 & Goals O/U",
+                  "type":"THREE_WAY_AND_TOTAL",
+                  "marketInternalType":"THREE_WAY_AND_TOTAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":34,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794658,
+                  "name":"1X2 & Goals O/U",
+                  "type":"THREE_WAY_AND_TOTAL",
+                  "marketInternalType":"THREE_WAY_AND_TOTAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":3.5,
+                  "formattedHandicap":"3.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":35,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"THREE_WAY_AND_BOTH_SCORE",
+            "marketName":"1X2 & Both Teams To Score",
+            "markets":[
+               {
+                  "id":43794829,
+                  "name":"1X2 & Both Teams To Score",
+                  "type":"THREE_WAY_AND_BOTH_SCORE",
+                  "marketInternalType":"THREE_WAY_AND_BOTH_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":52,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_ODD_EVEN",
+            "marketName":"Total Odd/Even",
+            "markets":[
+               {
+                  "id":43794781,
+                  "name":"Total Goals Odd/Even",
+                  "type":"TOTAL_ODD_EVEN",
+                  "marketInternalType":"TOTAL_ODD_EVEN",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":46,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_RANGE",
+            "marketName":"Total Goals",
+            "markets":[
+               {
+                  "id":43794652,
+                  "name":"Total Goals",
+                  "type":"TOTAL_GOALS_RANGE",
+                  "marketInternalType":"TOTAL_GOALS_RANGE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":33,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"DRAW_NO_BET",
+            "marketName":"Draw no bet",
+            "markets":[
+               {
+                  "id":43794679,
+                  "name":"Draw no bet",
+                  "type":"DRAW_NO_BET",
+                  "marketInternalType":"DRAW_NO_BET",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":44,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"WIN_TO_NIL",
+            "marketName":"Win To Nil",
+            "markets":[
+               {
+                  "id":43794664,
+                  "name":"Win To Nil",
+                  "type":"WIN_TO_NIL",
+                  "marketInternalType":"WIN_TO_NIL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":37,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CLEAN_SHEET",
+            "marketName":"Clean Sheet",
+            "markets":[
+               {
+                  "id":43794670,
+                  "name":"Clean Sheet",
+                  "type":"CLEAN_SHEET",
+                  "marketInternalType":"CLEAN_SHEET",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":39,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"WINNING_MARGIN",
+            "marketName":"Winning Margin",
+            "markets":[
+               {
+                  "id":43794682,
+                  "name":"Winning Margin",
+                  "type":"WINNING_MARGIN",
+                  "marketInternalType":"WINNING_MARGIN",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":43,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"FIRST_LAST_GOAL",
+            "marketName":"First/Last Goal",
+            "markets":[
+               {
+                  "id":43895227,
+                  "name":"First/Last Goal",
+                  "type":"FIRST_LAST_GOAL",
+                  "marketInternalType":"FIRST_LAST_GOAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":55,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"BOTH_SCORE_AND_TOTAL",
+            "marketName":"Both Score And Total",
+            "markets":[
+               {
+                  "id":43794661,
+                  "name":"Both Score And Total",
+                  "type":"BOTH_SCORE_AND_TOTAL",
+                  "marketInternalType":"BOTH_SCORE_AND_TOTAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":36,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794667,
+                  "name":"Both Score And Total",
+                  "type":"BOTH_SCORE_AND_TOTAL",
+                  "marketInternalType":"BOTH_SCORE_AND_TOTAL",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":38,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_ONE_X_TWO",
+            "marketName":"1x2",
+            "markets":[
+               {
+                  "id":43958686,
+                  "name":"Corner 1x2",
+                  "type":"CORNER_ONE_X_TWO",
+                  "marketInternalType":"ONE_X_TWO",
+                  "gradingType":"SINGLE_WINNER_WINS",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.504Z",
+                  "sequence":31,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_HANDICAP",
+            "marketName":"HDP",
+            "markets":[
+               {
+                  "id":43873615,
+                  "name":"Corner HDP (-0.50)",
+                  "type":"CORNER_HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"POINT_SPREAD",
+                  "handicap":-0.5,
+                  "formattedHandicap":"-0.50",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-20T15:13:15.822Z",
+                  "sequence":24,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_TOTAL",
+            "marketName":"Total",
+            "markets":[
+               {
+                  "id":43873591,
+                  "name":"Corner Total 10.00",
+                  "type":"CORNER_TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"POINT_TOTAL",
+                  "handicap":10,
+                  "formattedHandicap":"10.0",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-20T15:13:15.822Z",
+                  "sequence":30,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"WINNER_INTERVAL_1_15",
+            "marketName":"Winning Team Between 1 And 15 Minutes",
+            "markets":[
+               {
+                  "id":43895224,
+                  "name":"Winning Team Between 1 And 15 Minutes",
+                  "type":"WINNER_INTERVAL_1_15",
+                  "marketInternalType":"WINNER_INTERVAL_1_15",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":56,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"HALF_MOST_GOALS",
+            "marketName":"Half With The Most Goals",
+            "markets":[
+               {
+                  "id":43794685,
+                  "name":"Half With The Most Goals",
+                  "type":"HALF_MOST_GOALS",
+                  "marketInternalType":"HALF_MOST_GOALS",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FULL_EVENT",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":40,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "marketPeriod":"FIRST_HALF",
+      "marketTypes":[
+         {
+            "marketType":"ONE_X_TWO",
+            "marketName":"1x2",
+            "markets":[
+               {
+                  "id":43794700,
+                  "name":"1x2 First Half",
+                  "type":"ONE_X_TWO",
+                  "marketInternalType":"ONE_X_TWO",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":67,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"HANDICAP",
+            "marketName":"HDP",
+            "markets":[
+               {
+                  "id":43794913,
+                  "name":"HDP (-0.25) First Half",
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"ASIAN_HANDICAP",
+                  "handicap":-0.25,
+                  "formattedHandicap":"-0.25",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":58,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794907,
+                  "name":"HDP (0.00) First Half",
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"POINT_SPREAD",
+                  "handicap":0,
+                  "formattedHandicap":"0.00",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":57,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL",
+            "marketName":"Total",
+            "markets":[
+               {
+                  "id":43794916,
+                  "name":"Total 0.75 First Half",
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"ASIAN_HANDICAP",
+                  "handicap":0.75,
+                  "formattedHandicap":"0.5 / 1",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":62,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794910,
+                  "name":"Total 1.00 First Half",
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"POINT_TOTAL",
+                  "handicap":1,
+                  "formattedHandicap":"1.0",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":63,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"BOTH_SCORE",
+            "marketName":"Both Score",
+            "markets":[
+               {
+                  "id":43794688,
+                  "name":"Both Score First Half",
+                  "type":"BOTH_SCORE",
+                  "marketInternalType":"BOTH_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":75,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_HOME",
+            "marketName":"Total Goals Home",
+            "markets":[
+               {
+                  "id":43794790,
+                  "name":"Team Goals VPS Vaasa First Half",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":0.5,
+                  "formattedHandicap":"0.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":76,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794826,
+                  "name":"Team Goals VPS Vaasa First Half",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":84,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794796,
+                  "name":"Team Goals VPS Vaasa First Half",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":78,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794802,
+                  "name":"Team Goals VPS Vaasa First Half",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":3.5,
+                  "formattedHandicap":"3.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":80,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794784,
+                  "name":"Team Goals VPS Vaasa First Half",
+                  "type":"TOTAL_GOALS_HOME",
+                  "marketInternalType":"TOTAL_GOALS_HOME",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":4.5,
+                  "formattedHandicap":"4.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":79,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_AWAY",
+            "marketName":"Total Goals Away",
+            "markets":[
+               {
+                  "id":43794814,
+                  "name":"Team Goals KuPS First Half",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":0.5,
+                  "formattedHandicap":"0.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":82,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794832,
+                  "name":"Team Goals KuPS First Half",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":1.5,
+                  "formattedHandicap":"1.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":85,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794787,
+                  "name":"Team Goals KuPS First Half",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":2.5,
+                  "formattedHandicap":"2.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":77,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794820,
+                  "name":"Team Goals KuPS First Half",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":3.5,
+                  "formattedHandicap":"3.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":86,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               },
+               {
+                  "id":43794808,
+                  "name":"Team Goals KuPS First Half",
+                  "type":"TOTAL_GOALS_AWAY",
+                  "marketInternalType":"TOTAL_GOALS_AWAY",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "handicap":4.5,
+                  "formattedHandicap":"4.50",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":81,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORRECT_SCORE",
+            "marketName":"Correct Score",
+            "markets":[
+               {
+                  "id":43794691,
+                  "name":"Correct Score First Half",
+                  "type":"CORRECT_SCORE",
+                  "marketInternalType":"CORRECT_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":74,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_ODD_EVEN",
+            "marketName":"Total Odd/Even",
+            "markets":[
+               {
+                  "id":43794811,
+                  "name":"Total Goals Odd/Even First Half",
+                  "type":"TOTAL_ODD_EVEN",
+                  "marketInternalType":"TOTAL_ODD_EVEN",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":83,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL_GOALS_RANGE",
+            "marketName":"Total Goals",
+            "markets":[
+               {
+                  "id":43794655,
+                  "name":"Total Goals First Half",
+                  "type":"TOTAL_GOALS_RANGE",
+                  "marketInternalType":"TOTAL_GOALS_RANGE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":73,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_ONE_X_TWO",
+            "marketName":"1x2",
+            "markets":[
+               {
+                  "id":43958662,
+                  "name":"Corner 1x2 First Half",
+                  "type":"CORNER_ONE_X_TWO",
+                  "marketInternalType":"ONE_X_TWO",
+                  "gradingType":"SINGLE_WINNER_WINS",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.504Z",
+                  "sequence":72,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_HANDICAP",
+            "marketName":"HDP",
+            "markets":[
+               {
+                  "id":43958656,
+                  "name":"Corner HDP (-0.25) First Half",
+                  "type":"CORNER_HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "gradingType":"ASIAN_HANDICAP",
+                  "handicap":-0.25,
+                  "formattedHandicap":"-0.25",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.504Z",
+                  "sequence":68,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         },
+         {
+            "marketType":"CORNER_TOTAL",
+            "marketName":"Total",
+            "markets":[
+               {
+                  "id":43873588,
+                  "name":"Corner Total 4.50 First Half",
+                  "type":"CORNER_TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "gradingType":"POINT_TOTAL",
+                  "handicap":4.5,
+                  "formattedHandicap":"4.5",
+                  "period":"FIRST_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "status":"OPEN",
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":69,
+                  "scoreType":"CORNERS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "marketPeriod":"SECOND_HALF",
+      "marketTypes":[
+         {
+            "marketType":"ONE_X_TWO",
+            "marketName":"1x2",
+            "markets":[
+               {
+                  "type":"ONE_X_TWO",
+                  "marketInternalType":"ONE_X_TWO",
+                  "period":"SECOND_HALF"
+               }
+            ]
+         },
+         {
+            "marketType":"HANDICAP",
+            "marketName":"HDP",
+            "markets":[
+               {
+                  "type":"HANDICAP",
+                  "marketInternalType":"HANDICAP",
+                  "period":"SECOND_HALF"
+               }
+            ]
+         },
+         {
+            "marketType":"TOTAL",
+            "marketName":"Total",
+            "markets":[
+               {
+                  "type":"TOTAL",
+                  "marketInternalType":"TOTAL",
+                  "period":"SECOND_HALF"
+               }
+            ]
+         },
+         {
+            "marketType":"BOTH_SCORE",
+            "marketName":"Both Score",
+            "markets":[
+               {
+                  "id":43794676,
+                  "name":"Both Score Second Half",
+                  "type":"BOTH_SCORE",
+                  "marketInternalType":"BOTH_SCORE",
+                  "gradingType":"RUNNER_OUTCOME",
+                  "period":"SECOND_HALF",
+                  "startTime":"2024-05-22T15:00:00.000Z",
+                  "inRunning":false,
+                  "allowLiveBetting":true,
+                  "lastUpdate":"2024-05-21T23:13:37.503Z",
+                  "sequence":87,
+                  "scoreType":"POINTS",
+                  "tags":{
+                     
+                  }
+               }
+            ]
+         }
+      ]
+   }
+]
