@@ -28,6 +28,10 @@ First specifying the folder of output, and then tests to run.
 
 Refer to variables docs on [Robot - Variables:](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#using-variables)
 
+## Requirements
+
+For pip 'Requirements' install, please refer to [Pip - Requirements](https://pip.pypa.io/en/stable/user_guide/#id1)
+
 ## Reports
 
 Please see below example of a generated report.
