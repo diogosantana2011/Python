@@ -9,6 +9,7 @@ class SeleniumHTTPInterceptor:
     using BrowserMob Proxy (service-based).
 
     Reference: Github - [BrowserMob Proxy](https://github.com/lightbody/browsermob-proxy/releases)
+    Browsermob Docs: Read The Docs - [https://browsermob-proxy-py.readthedocs.io/en/stable/client.html]
 
     This library provides comprehensive HTTP traffic capture and analysis capabilities
     for automated testing. It captures both request payloads and response bodies,
@@ -141,12 +142,19 @@ class SeleniumHTTPInterceptor:
     @keyword
     def connect_to_proxy_client(self):
         """
-        Connect to an existing BrowserMob Proxy service and create a client.
+        Connect to an existing BrowserMob Proxy service and create a client if needed.
+        Ensures at least one proxy exists, then returns self.proxy.proxy.
         """
         import re
         bmp_url_clean = re.sub(r'^https?://', '', self.bmp_url)
         logging.info(f"Connecting to BrowserMob Proxy service at: {bmp_url_clean}")
         self.proxy = Client(bmp_url_clean)
+        # Check if there are existing proxies
+        existing_proxies = self.proxy.proxy_ports
+        if not existing_proxies:
+            logging.info("No existing proxies found. Creating a new proxy...")
+            self.proxy.post("/proxy")  # POST /proxy creates a new proxy
+        # Now self.proxy.proxy will be usable
         return self.proxy.proxy
 
     @keyword
