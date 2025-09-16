@@ -1,0 +1,47 @@
+export JAVA_OPTS="\
+--add-opens java.base/java.lang=ALL-UNNAMED \
+--add-opens java.base/java.nio=ALL-UNNAMED \
+--add-opens java.base/java.util=ALL-UNNAMED \
+--add-opens java.base/sun.nio.ch=ALL-UNNAMED \
+--add-opens java.base/java.lang.reflect=ALL-UNNAMED"
+
+Exported java options to handle old java version versus new one.
+
+Then from: /home/{user}/QA/tools/browsermob-proxy-2.1.4-bin/browsermob-proxy-2.1.4
+ls -la
+total 788
+drwxr-xr-x 5 dsantana dsantana   4096 Sep 16 15:05 .
+drwxrwxr-x 3 dsantana dsantana   4096 Sep 16 14:45 ..
+drwxr-xr-x 3 dsantana dsantana   4096 Dec 26  2016 bin
+-rw-rw-r-- 1 dsantana dsantana    109 Sep 16 15:07 bmp.log
+-rw-rw-r-- 1 dsantana dsantana 490543 Dec 26  2016 browsermob-core-2.1.4-javadoc.jar
+-rw-rw-r-- 1 dsantana dsantana 105875 Dec 26  2016 browsermob-core-2.1.4-sources.jar
+-rw-rw-r-- 1 dsantana dsantana 114174 Dec 26  2016 browsermob-rest-2.1.4-javadoc.jar
+-rw-rw-r-- 1 dsantana dsantana  16839 Dec 26  2016 browsermob-rest-2.1.4-sources.jar
+drwxr-xr-x 2 dsantana dsantana   4096 Dec 26  2016 lib
+-rw-rw-r-- 1 dsantana dsantana  11359 Dec 24  2016 LICENSE.txt
+-rw-rw-r-- 1 dsantana dsantana  29016 Dec 24  2016 README.md
+-rw-rw-r-- 1 dsantana dsantana    103 Dec 24  2016 README.txt
+drwxrwxr-x 2 dsantana dsantana   4096 Dec 24  2016 ssl-support
+
+Run: bin/browsermob-proxy --port 9090
+
+Output: 
+
+bin/browsermob-proxy --port 9090
+
+Running BrowserMob Proxy using LittleProxy implementation. To revert to the legacy implementation, run the proxy with the command-line option '--use-littleproxy false'.
+[INFO  2025-09-16T15:09:57,137 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2025-09-16T15:09:57,153 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2025-09-16T15:09:57,175 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[INFO  2025-09-16T15:09:57,224 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:9090 
+
+### SERVER HAS STARTED, NO SEND REQUEST FOR PROXY
+curl http://localhost:9090/proxy
+{"proxyList":[]}
+
+curl -X POST http://localhost:9090/proxy
+{"port":8081}
+
+curl http://localhost:9090/proxy
+{"proxyList":[{"port":8081}]}
