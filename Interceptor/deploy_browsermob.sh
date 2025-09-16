@@ -94,3 +94,39 @@ echo
 echo " ** BrowserMob Proxy Deploy finished **"
 echo "    BROWSERMOB_PROXY_PATH set to: $BROWSERMOB_PROXY_PATH"
 echo
+
+#####
+# Jenkins 
+#####
+# BROWSERMOB_ARTIFACT = "https://{NEXUS}/{PATH}/browsermob-core/2.1.5"
+# stage ('Download Artifacts') {
+#     steps {
+#         container('aio') {
+#             sh "cd jenkins \
+#             && bash downloader.sh $env.API_ARTIFACT \
+#             && bash downloader.sh $env.PRICES_API_ARTIFACT \
+#             && bash downloader.sh $env.AMS_SERVICE_ARTIFACT \
+#             && bash downloader.sh $env.AMS_UI_ARTIFACT \
+#             && bash downloader.sh $env.UI_ARTIFACT \
+#             && bash downloader.sh $env.ADMINUI_ARTIFACT \
+#             && bash downloader.sh $env.BROWSERMOB_ARTIFACT \
+#             && bash downloader.sh $env.WIREMOCK_ARTIFACT"
+#         }
+#     }
+# }
+
+### browsermob.service
+# [Unit]
+# Description=BrowserMob Proxy
+# After=network.target
+
+# [Service]
+# Type=simple
+# ExecStart={{BROWSERMOB_PROXY_PATH}} --port 9090
+# Restart=on-failure
+# RestartSec=5
+# SuccessExitStatus=143
+# TimeoutSec=180
+
+# [Install]
+# WantedBy=multi-user.target
