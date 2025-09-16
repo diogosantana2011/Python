@@ -130,3 +130,19 @@ echo
 
 # [Install]
 # WantedBy=multi-user.target
+
+### WITH JAVA OPTS
+# [Service]
+# Type=simple
+# Environment="JAVA_OPTS=--add-opens java.base/java.lang=ALL-UNNAMED \
+# --add-opens java.base/java.nio=ALL-UNNAMED \
+# --add-opens java.base/java.util=ALL-UNNAMED \
+# --add-opens java.base/sun.nio.ch=ALL-UNNAMED \
+# --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
+# ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java $JAVA_OPTS \
+#   -cp /srv/browsermob/browsermob-dist-2.1.4.jar \
+#   net.lightbody.bmp.proxy.Main \
+#   --port 9090
+# Restart=on-failure
+# RestartSec=5
+# TimeoutSec=180
