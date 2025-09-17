@@ -10,7 +10,10 @@ class SeleniumHTTPInterceptor:
     Robot Framework library to intercept HTTP requests in Selenium tests
     using BrowserMob Proxy (service-based).
 
-    Reference: Github - [BrowserMob Proxy](https://github.com/lightbody/browsermob-proxy/releases)
+    #### Reference: 
+        - Github - [BrowserMob Proxy](https://github.com/lightbody/browsermob-proxy/releases)
+    #### Reference: 
+        - ReadTheDocs - [BrowserMob Docs](https://browsermob-proxy-py.readthedocs.io/en/stable/)
 
     This library provides comprehensive HTTP traffic capture and analysis capabilities
     for automated testing. It captures both request payloads and response bodies,
@@ -34,20 +37,19 @@ class SeleniumHTTPInterceptor:
 
     Basic Usage:
     1. Import this library in Robot Framework:
-    `Library    project_lib/services/robot/SeleniumHTTPInterceptor.py`
+    `Library project_lib/services/robot/SeleniumHTTPInterceptor.py`
 
     2. Start capturing HTTP requests:
-    `Start Capture    test_capture    capture_content=${True}`
+    `Start Capture test_capture capture_content=${True}`
 
     3. Perform browser actions that trigger HTTP requests.
-    
     4. Extract captured data:
-       ```
-        ${requests}= Get Requests
-        ${response_bodies}= Get Response Bodies By Url Contains /api/endpoint
-        ${request_payloads}= Get Request Payloads By Url Contains /api/endpoint
-        ${complete_data}= Get Request And Response Data url_contains=/api/endpoint
-       ```
+    ```
+    ${requests}= Get Requests
+    ${response_bodies}= Get Response Bodies By Url Contains /api/endpoint
+    ${request_payloads}= Get Request Payloads By Url Contains /api/endpoint
+    ${complete_data}= Get Request And Response Data url_contains=/api/endpoint
+    ```
 
     5. Clean up:
     `Stop Browser`
@@ -85,23 +87,19 @@ class SeleniumHTTPInterceptor:
     ### *Example Robot Framework Test*
 
     *** Settings ***
-    `Library    project_lib/services/robot/SeleniumHTTPInterceptor.py`
+    `Library project_lib/services/robot/SeleniumHTTPInterceptor.py`
 
     *** Test Cases ***
     Test API Validation
     ##### Start capturing HTTP requests
-    `Start Capture    test_capture    ${True}`
-    
+    `Start Capture test_capture ${True}`
     ##### Extract API data
-    `${login_data}=    Get Request And Response Data    url_contains=/api/login`
-    
+    `${login_data}= Get Request And Response Data url_contains=/api/login`
     ##### Validate request payload
-    `Should Be Equal    ${login_data[0]['request']['json']['username']}    testuser`
-    
+    `Should Be Equal ${login_data[0]['request']['json']['username']} testuser`
     ##### Validate response
-    `Should Be Equal    ${login_data[0]['response']['status']}    ${200}`
-    `Should Be True     ${login_data[0]['response']['json']['success']}`
-    
+    `Should Be Equal ${login_data[0]['response']['status']} ${200}`
+    `Should Be True ${login_data[0]['response']['json']['success']}`
     ##### Clean up
     `Clean up`
 
@@ -116,14 +114,15 @@ class SeleniumHTTPInterceptor:
     ##########################
     def __init__(self, log_directory=None):
         """
-        Initialize the SeleniumHTTPInterceptor library for use with a BrowserMob Proxy service.
+        Initialize the SeleniumHTTPInterceptor library.
 
-        This sets up the proxy client URL (from BROWSERMOB_PROXY_URL) and prepares
-        the logging directory for captured traffic.
+        Reads the BrowserMob Proxy service URL from the environment variable
+        `BROWSERMOB_PROXY_URL` (defaults to `http://localhost:9090`).
+        Also prepares a directory for log storage.
 
         \n*Args*:
-            `log_directory` (str, optional): Path to store BrowserMob Proxy logs.
-                If not provided, defaults to "<current_working_directory>/logs/browsermob".
+        \n`log_directory` (str, optional): Path for log storage. Defaults to
+        `<cwd>/logs/browsermob` if not provided.
         """
         # Get BrowserMob Proxy URL from environment
         self.bmp_url = os.getenv("BROWSERMOB_PROXY_URL", "http://localhost:9090")
@@ -155,8 +154,16 @@ class SeleniumHTTPInterceptor:
     @keyword
     def connect_to_proxy_client_no_chrome_proxy(self):
         """
-        Connect to BrowserMob Proxy but don't route Chrome through it.
-        This allows you to capture requests that Chrome makes directly.
+        Connect to the BrowserMob Proxy service without routing Chrome through it.
+
+        Useful if you only need to capture background traffic and not route
+        Selenium's Chrome traffic.
+
+        \n*Returns*:
+        str: Always returns "no_proxy".
+
+        \n*Raises*:
+        RuntimeError: If the proxy service cannot be reached.
         """
         bmp_url_clean = re.sub(r'^https?://', '', self.bmp_url)
         logging.info(f"Connecting to BrowserMob Proxy service at: {bmp_url_clean}")
@@ -180,8 +187,14 @@ class SeleniumHTTPInterceptor:
     @keyword
     def connect_to_proxy_client(self):
         """
-        Connect to an existing BrowserMob Proxy service and create a client if needed.
-        Returns the proxy URL in format suitable for Chrome (host:port).
+        Connect to the BrowserMob Proxy service and create a client.
+        If no existing proxy instances are available, a new one will be created.
+
+        \n*Returns*:
+        str: Proxy URL in `host:port` format for Chrome.
+
+        \n*Raises*:
+        RuntimeError: If the service cannot be reached or client init fails.
         """
         bmp_url_clean = re.sub(r'^https?://', '', self.bmp_url)
         logging.info(f"Connecting to BrowserMob Proxy service at: {bmp_url_clean}")
@@ -240,8 +253,14 @@ class SeleniumHTTPInterceptor:
     @keyword
     def get_chrome_proxy_url(self):
         """
-        Get the proxy URL in the format Chrome expects (host:port).
-        Call this after connect_to_proxy_client.
+        Get the proxy URL in Chrome-compatible format (`host:port`).
+        \nMust be called after `connect_to_proxy_client`.
+
+        \n*Returns*:
+        str: Proxy URL for Chrome.
+
+        \n*Raises*:
+        RuntimeError: If no proxy client has been initialized.
         """
         if not self.proxy or not self.proxy.proxy_ports:
             raise RuntimeError("No proxy available. Call connect_to_proxy_client first.")
@@ -254,7 +273,10 @@ class SeleniumHTTPInterceptor:
 
     @keyword
     def stop_browser(self):
-        """Stop the Selenium browser and BrowserMob Proxy server."""
+        """
+        Stop the Selenium browser and close the BrowserMob Proxy client.
+        \nCloses WebDriver if running, and shuts down the proxy session.
+        """
         if self.driver:
             self.driver.quit()
             self.driver = None
@@ -268,12 +290,16 @@ class SeleniumHTTPInterceptor:
     @keyword
     def start_capture(self, label="test_capture", capture_content=True, capture_headers=True, capture_binary_content=False):
         """
-        \nStart capturing HTTP requests in the BrowserMob Proxy HAR.
+        Start capturing HTTP requests into a HAR file.
+
         \n*Args*:
-            -`label`: Label for the HAR capture
-            -`capture_content`: Whether to capture response content (default: True)
-            -`capture_headers`: Whether to capture headers (default: True) 
-            -`capture_binary_content`: Whether to capture binary content (default: False)
+        `label` (str): Label for the HAR capture.
+        `capture_content` (bool): Capture response bodies (default: True).
+        `capture_headers` (bool): Capture headers (default: True).
+        `capture_binary_content` (bool): Capture binary content (default: False).
+
+        \n*Raises*:
+        RuntimeError: If proxy client is not initialized.
         """
         if not self.proxy:
             raise RuntimeError("Proxy not initialized. Call Start Browser With Proxy first.")
@@ -289,7 +315,14 @@ class SeleniumHTTPInterceptor:
 
     @keyword
     def get_requests(self):
-        """Return all captured HTTP requests as a HAR dictionary."""
+        """
+        Retrieve all captured HTTP requests as HAR data.
+        \n*Returns*:
+        dict: HAR-formatted dictionary of captured requests.
+
+        \n*Raises*:
+        RuntimeError: If proxy client is not initialized.
+        """
         if not self.proxy:
             raise RuntimeError("Proxy not initialized. Call Start Browser With Proxy first.")
         return self.proxy.har
@@ -300,13 +333,17 @@ class SeleniumHTTPInterceptor:
     @keyword
     def get_response_bodies(self, url_pattern=None, exact_match=False, url_contains=None):
         """
-        Extract response bodies from captured requests.\n
-        \n*Args*:\n
-            \n-`url_pattern`: Optional regex pattern to filter URLs (default behavior)
-            \n-`exact_match`: If True with url_pattern, requires exact URL match
-            \n-`url_contains`: Simple substring match for URLs (alternative to regex)
+        Extract response bodies from captured requests.
+        \n*Args*:
+        - `url_pattern` (str, optional): Regex to filter URLs.
+        - `exact_match` (bool): Require exact match if True.
+        - `url_contains` (str, optional): Simple substring filter.
+
         \n*Returns*:
-            List of dictionaries with URL, status, and response body
+        list[dict]: Response metadata and bodies.
+
+        \n*Raises*:
+        RuntimeError: If proxy client is not initialized.
         """
         import json
         import base64
@@ -384,13 +421,17 @@ class SeleniumHTTPInterceptor:
     @keyword
     def get_request_payloads(self, url_pattern=None, exact_match=False, url_contains=None):
         """
-        Extract request payloads/bodies from captured requests.\n
-        \n*Args*:\n
-            \n-`url_pattern`: Optional regex pattern to filter URLs
-            \n-`exact_match`: If True with url_pattern, requires exact URL match
-            \n-`url_contains`: Simple substring match for URLs
+        Extract request payloads from captured requests.
+
+        \n*Args*:
+        \n- `url_pattern` (str, optional): Regex to filter URLs.
+        \n- `exact_match` (bool): Require exact match if True.
+        \n- `url_contains` (str, optional): Simple substring filter.
+
         \n*Returns*:
-            List of dictionaries with URL, method, headers, and request payload
+        - list[dict]: Request metadata and payloads.
+        \n*Raises*:
+        - RuntimeError: If proxy client is not initialized.
         """
         import json
         from urllib.parse import parse_qs, unquote_plus
