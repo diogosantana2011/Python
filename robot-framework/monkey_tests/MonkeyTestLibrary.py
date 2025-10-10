@@ -34,35 +34,86 @@ EXPECTED_PAGE_ERRORS = [
     'cannot read property', 'null is not an object'
 ]
 
+IGNORED_ERROR_PATTERNS = [
+    'failed to fetch dynamically imported module',
+    'dynamically imported module',
+    'chunk load error',
+    'loading chunk',
+    # Often 404s for optional resources
+    'failed to load resource',
+]
+
+CRITICAL_ERRORS = [
+    '500',
+    'internal server error',
+    'undefined is not a function',
+    'cannot read property',
+    'null is not an object',
+]
+
+WARNING_ERRORS = [
+    '400',
+    '404',
+    'not found',
+]
+
 class MonkeyTestLibrary:
     """
     MonkeyTestLibrary for Robot Framework.
 
-    This library provides automated "monkey testing" for web applications, 
-    performing randomized UI interactions to uncover stability issues, 
+    This library provides automated "monkey testing" for web applications,
+    performing randomized UI interactions to uncover stability issues,
     JavaScript errors, and unexpected behaviors.
 
-    Key Features:
-    - Randomized interactions: clicks, typing, scrolling, dropdown selection, and toggles.
-    - Safety checks: avoids destructive actions like delete, logout, or payment triggers.
-    - Error detection:
+    *Key Features*:
+    \nRandomized interactions: clicks, typing, scrolling, dropdown selection, and toggles.
+    - *Safety checks*: 
+        - Avoids destructive actions like delete, logout, or payment triggers.
+    - *Error detection*:
         - Scans page source for HTTP errors, JavaScript exceptions, and common error phrases.
-        - Captures screenshots on critical errors.
+        - Uses strict regex matching to avoid false positives from CSS (e.g., "500px", "error-class").
+        - Categorizes findings into critical errors, warnings, and info-level messages.
+        - Captures screenshots automatically on critical errors.
         - Optionally checks browser console logs for severe and warning-level messages.
-    - Monitoring:
-        - Can inject a JavaScript listener to capture runtime errors during testing.
-    - Configurable:
+    - *Monitoring*:
+        - Can inject a JavaScript event listener to capture runtime errors during testing.
+        - Provides comprehensive health checks combining page source and console log analysis.
+    - *Configurable*:
         - Duration, action frequency, and custom error patterns can be specified.
-    - Retry logic:
-        - Actions on dynamic elements use retries to handle transient DOM changes.
-
+        - Default error patterns can be overridden per test case.
+        - Configurable context extraction shows 100 chars before and 200 chars after errors.
+        - Performance optimized:
+        - Precompiles regex patterns for faster execution.
+        - Splits page source once rather than per-pattern for efficiency.
+    - *Retry logic*:
+        - Actions on dynamic elements use configurable retries to handle stale references and transient DOM changes.
+        - Consistent retry mechanism across all interaction types.
     Intended Usage:
     - Perform automated exploratory testing to catch regressions or page breakages.
-    - Combine with Robot Framework test suites for continuous monitoring.
-    - Use `run_monkey_test_with_monitoring` for a comprehensive test that reports JS errors.
+    - Combine with Robot Framework test suites for continuous integration and monitoring.
+    - Use `run_monkey_test` for basic randomized interaction testing.
+    - Use `run_monkey_test_with_monitoring` for comprehensive testing that captures JavaScript errors.
+    - Use `verify_page_health` for quick stability checks after navigation or critical actions.
+    - Use `verify_no_errors_on_page` with custom patterns for domain-specific error detection.
 
-    Example:
-        | Run Monkey Test With Monitoring | 60 | 2 |
+    Example Usage:
+        Library | MonkeyTestLibrary
+        \n#### Basic monkey test for 60 seconds at 2 actions per second
+        Run Monkey Test | 60 | 2 |
+        \n#### Monkey test with JavaScript error monitoring
+        Run Monkey Test With Monitoring | 60 | 2 |
+        \n#### Check for specific error messages
+        Verify No Errors On Page | Payment Failed | Transaction Error | Account Locked
+        \n#### Combined health check (page source + console logs)
+        Verify Page Health
+        \n#### Custom health check with specific error patterns
+        Verify Page Health | Custom Error | API Timeout | Database Connection Failed
+    Notes:
+    - Requires an existing SeleniumLibrary browser session to be open.
+    - Works with Chrome, Firefox, and other Selenium-supported browsers.
+    - Dangerous elements (containing keywords like 'delete', 'logout', 'withdraw') are automatically skipped.
+    - Known benign errors (like "failed to fetch dynamically imported module") are filtered out.
+    - All actions include randomized delays to simulate realistic user behavior.
     """
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 
@@ -129,39 +180,49 @@ class MonkeyTestLibrary:
         compiled_patterns = []
         for err in expected_errors:
             err_lower = err.lower()
-            # Use negative lookahead/lookbehind to avoid matching within words/CSS
-            # (?<![\w-]) = not preceded by word char or hyphen
-            # (?![\w-]) = not followed by word char or hyphen
             pattern = r'(?<![\w-])' + re.escape(err_lower) + r'(?![\w-])'
             compiled_patterns.append((err, err_lower, re.compile(pattern, re.IGNORECASE)))
+        # Precompile ignore patterns
+        ignore_patterns = [
+            re.compile(re.escape(ignore_text.lower()), re.IGNORECASE)
+            for ignore_text in IGNORED_ERROR_PATTERNS
+        ]
         found_critical = []
         found_warning = []
         found_info = []
-        # Split once
         lines = page_source.splitlines()
         for err, err_lower, pattern in compiled_patterns:
-            # Quick check: does pattern exist at all
-            if not pattern.search(page_source):
+            try:
+                if not pattern.search(page_source):
+                    continue
+                # Find matching lines
+                matching_lines = []
+                for line in lines:
+                    if pattern.search(line):
+                        # Check if this line contains any ignored patterns
+                        if not any(ignore_pattern.search(line) for ignore_pattern in ignore_patterns):
+                            matching_lines.append(line.strip())
+                if matching_lines:
+                    limited_lines = [line[:200] for line in matching_lines[:3]]
+                    log_msg = f"{err} -> {' | '.join(limited_lines)}"
+                    if err_lower in CRITICAL_ERRORS:
+                        found_critical.append(log_msg)
+                    elif err_lower in WARNING_ERRORS:
+                        found_warning.append(log_msg)
+                    else:
+                        found_info.append(log_msg)
+            except StaleElementReferenceException as stale_err:
+                logging.warning(f"Encountered stale element reference while scanning page source. Error: {stale_err}")
+                found_warning.append(f"Stale element reference encountered during error scan. Error: {stale_err}")
                 continue
-            # Find matching lines
-            matching_lines = [line.strip() for line in lines if pattern.search(line)]
-            if matching_lines:
-                # Limit to first 3 occurrences and truncate each
-                limited_lines = [line[:200] for line in matching_lines[:3]]
-                log_msg = f"{err} -> {' | '.join(limited_lines)}"
-                if err_lower in ('500',
-                                'internal server error',
-                                'undefined is not a function',
-                                'cannot read property',
-                                'null is not an object'):
-                    found_critical.append(log_msg)
-                elif err_lower in ('400', '404', 'not found'):
-                    found_warning.append(log_msg)
-                else:
-                    found_info.append(log_msg)
+            except Exception as err:
+                logging.error(f"Unexpected error during error scanning for '{err}': {err}")
+                found_info.append(f"Unexpected error: {str(err)}")
+                continue
         if found_critical:
             selenium.capture_page_screenshot()
             logging.error(f"Critical errors found: {', '.join(found_critical)}")
+            raise AssertionError(f"Critical errors found on page: {', '.join(found_critical)}")
         if found_warning:
             logging.warning(f"Warnings found: {', '.join(found_warning)}")
         if found_info:
@@ -389,7 +450,7 @@ class MonkeyTestLibrary:
                     k=random_text_length
                 ))
             try:
-                for attempt in range(2):
+                for attempt in range(3):
                     element.clear()
                     element.send_keys(random_text)
                     logging.info(f"Typed '{random_text}' into input field of type '{input_type}'.")
