@@ -2,6 +2,10 @@ import os
 import logging
 import requests
 import re
+import json
+import base64
+import glob
+from urllib.parse import parse_qs
 from robot.api.deco import keyword
 from browsermobproxy import Client
 
@@ -52,17 +56,18 @@ class SeleniumHTTPInterceptor:
     ```
 
     5. Clean up:
-    `Stop Browser`
+    `Cleanup`
 
     ### *Available Keywords*
 
     Browser Management:
-    - Start Proxy Client
-    - Start Browser With Proxy
-    - Stop Browser
+    - Connect To Proxy Client
+    - Get Chrome Proxy Url
+    - Cleanup
 
     Traffic Capture:
     - Start Capture
+    - Clear Har Data
     - Get Requests
 
     Response Body Extraction:
@@ -84,6 +89,10 @@ class SeleniumHTTPInterceptor:
     Direct HTTP Requests:
     - Fetch Response Body Directly
 
+    Health Checks:
+    - Check Proxy Health
+    - Test Proxy Connectivity
+
     ### *Example Robot Framework Test*
 
     *** Settings ***
@@ -91,17 +100,18 @@ class SeleniumHTTPInterceptor:
 
     *** Test Cases ***
     Test API Validation
-    ##### Start capturing HTTP requests
-    `Start Capture test_capture ${True}`
+    ##### Connect to proxy and start capturing
+    `${proxy_url}=    Connect To Proxy Client`
+    `Start Capture    test_capture    ${True}`
     ##### Extract API data
-    `${login_data}= Get Request And Response Data url_contains=/api/login`
+    `${login_data}=    Get Request And Response Data    url_contains=/api/login`
     ##### Validate request payload
-    `Should Be Equal ${login_data[0]['request']['json']['username']} testuser`
+    `Should Be Equal    ${login_data[0]['request']['json']['username']}    testuser`
     ##### Validate response
-    `Should Be Equal ${login_data[0]['response']['status']} ${200}`
-    `Should Be True ${login_data[0]['response']['json']['success']}`
+    `Should Be Equal    ${login_data[0]['response']['status']}    ${200}`
+    `Should Be True    ${login_data[0]['response']['json']['success']}`
     ##### Clean up
-    `Clean up`
+    `Cleanup`
 
     ### *Troubleshooting*:
     - Ensure BROWSERMOB_PROXY_URL points to a reachable service (host:port)
@@ -149,41 +159,50 @@ class SeleniumHTTPInterceptor:
             logging.info(f"Using fallback log directory: {self.log_directory}")
 
     ##########################
-    # BROWSER & PROXY CONTROL
+    # HEALTH CHECK
+    ##########################       
+    @keyword
+    def check_proxy_health(self):
+        """Verify proxy service is active and reachable."""
+        try:
+            response = requests.get(f"{self.bmp_url}/proxy", timeout=5)
+            response.raise_for_status()
+            return True
+        except requests.exceptions.RequestException as e:
+            logging.warning(f"Proxy health check failed: {e}")
+            return False
+        
+    @keyword
+    def test_proxy_connectivity(self, proxy_host, proxy_port, proxy_url):
+        """Test connectivity using socket library."""
+        try:
+            import socket
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            result = sock.connect_ex((proxy_host, int(proxy_port)))
+            sock.close()
+            if result == 0:
+                logging.info(f"Proxy connection test PASSED for {proxy_url}")
+                return True
+            else:
+                logging.error(f"Proxy connection test FAILED for {proxy_url} - port likely not exposed")
+                return False
+        except Exception as err:
+            logging.error(f"Proxy connection test error: {err}")
+            return False
+
+    ##########################
+    # HAR MANAGEMENT
     ##########################
     @keyword
-    def connect_to_proxy_client_no_chrome_proxy(self):
-        """
-        Connect to the BrowserMob Proxy service without routing Chrome through it.
+    def clear_har_data(self, label="cleared"):
+        """Clear captured HAR data to free memory."""
+        if self.proxy:
+            self.proxy.new_har(label)
 
-        Useful if you only need to capture background traffic and not route
-        Selenium's Chrome traffic.
-
-        \n*Returns*:
-        str: Always returns "no_proxy".
-
-        \n*Raises*:
-        RuntimeError: If the proxy service cannot be reached.
-        """
-        bmp_url_clean = re.sub(r'^https?://', '', self.bmp_url)
-        logging.info(f"Connecting to BrowserMob Proxy service at: {bmp_url_clean}")
-        try:
-            # Test connection to BrowserMob Proxy service first
-            test_response = requests.get(f"{self.bmp_url}/proxy", timeout=10)
-            test_response.raise_for_status()
-            logging.info("Successfully connected to BrowserMob Proxy service")
-        except requests.exceptions.RequestException as e:
-            raise RuntimeError(f"Failed to connect to BrowserMob Proxy at {self.bmp_url}: {e}")
-        # Initialize the client
-        self.proxy = Client(bmp_url_clean)
-        # Create a proxy instance for HAR capture
-        if not self.proxy.proxy_ports:
-            response = requests.post(f"{self.bmp_url}/proxy")
-            response.raise_for_status()
-            self.proxy = Client(bmp_url_clean)
-        logging.info("Proxy client ready for HAR capture (Chrome will not use proxy)")
-        return "no_proxy"
-
+    ##########################
+    # BROWSER & PROXY CONTROL
+    ##########################
     @keyword
     def connect_to_proxy_client(self):
         """
@@ -232,18 +251,13 @@ class SeleniumHTTPInterceptor:
                 proxy_url = f"{proxy_host}:{proxy_port}"
                 logging.info(f"Final proxy URL for Chrome: {proxy_url}")
                 # Test the proxy connection
-                try:
-                    import socket
-                    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                    sock.settimeout(5)
-                    result = sock.connect_ex((proxy_host, int(proxy_port)))
-                    sock.close()
-                    if result == 0:
-                        logging.info(f"Proxy connection test PASSED for {proxy_url}")
-                    else:
-                        logging.error(f"Proxy connection test FAILED for {proxy_url} - port likely not exposed")
-                except Exception as e:
-                    logging.error(f"Proxy connection test error: {e}")
+                connection_ok = self.test_proxy_connectivity(
+                    proxy_host=proxy_host,
+                    proxy_port=proxy_port,
+                    proxy_url=proxy_url
+                )
+                if not connection_ok:
+                    logging.warning(f"Proxy port test failed, but proceeding with {proxy_url}")
                 return proxy_url
             else:
                 raise RuntimeError("No proxy ports available after initialization")
@@ -272,7 +286,7 @@ class SeleniumHTTPInterceptor:
         return proxy_url
 
     @keyword
-    def stop_browser(self):
+    def clean_up(self):
         """
         Stop the Selenium browser and close the BrowserMob Proxy client.
         \nCloses WebDriver if running, and shuts down the proxy session.
@@ -345,8 +359,6 @@ class SeleniumHTTPInterceptor:
         \n*Raises*:
         RuntimeError: If proxy client is not initialized.
         """
-        import json
-        import base64
         if not self.proxy:
             raise RuntimeError("Proxy not initialized. Call Start Browser With Proxy first.")
         har_data = self.proxy.har
@@ -392,8 +404,8 @@ class SeleniumHTTPInterceptor:
                 if 'application/json' in body_data['mimeType'] and body_data['body']:
                     try:
                         body_data['json'] = json.loads(body_data['body'])
-                    except json.JSONDecodeError:
-                        pass
+                    except json.JSONDecodeError as err:
+                        raise json.JSONDecodeError(f"Error decoding: {err}")
             response_bodies.append(body_data)
         return response_bodies
 
@@ -433,8 +445,6 @@ class SeleniumHTTPInterceptor:
         \n*Raises*:
         - RuntimeError: If proxy client is not initialized.
         """
-        import json
-        from urllib.parse import parse_qs, unquote_plus
         if not self.proxy:
             raise RuntimeError("Proxy not initialized. Call Start Browser With Proxy first.")
         har_data = self.proxy.har
@@ -482,7 +492,7 @@ class SeleniumHTTPInterceptor:
                 if 'text' in post_data:
                     payload_text = post_data['text']
                     payload_data['payload'] = payload_text
-                    # Try to parse JSON if content type suggests it
+                    # Try to parse JSON
                     if 'application/json' in mime_type and payload_text:
                         try:
                             payload_data['json'] = json.loads(payload_text)
@@ -494,7 +504,7 @@ class SeleniumHTTPInterceptor:
                             payload_data['form_data'] = parse_qs(payload_text, keep_blank_values=True)
                         except Exception:
                             pass
-                # Handle form parameters (alternative format)
+                # Handle form parameters
                 elif 'params' in post_data:
                     form_params = {}
                     for param in post_data['params']:
@@ -598,7 +608,6 @@ class SeleniumHTTPInterceptor:
         \n*Returns*:
             Dictionary with status, headers, and response body
         """
-        import json
         try:
             response = requests.request(
                 method=method.upper(),
@@ -615,18 +624,18 @@ class SeleniumHTTPInterceptor:
                 'body': response.text,
                 'size': len(response.content)
             }
-            # Try to parse JSON if content type suggests it
+            # Try to parse JSON
             content_type = response.headers.get('content-type', '')
             if 'application/json' in content_type:
                 try:
                     result['json'] = response.json()
-                except json.JSONDecodeError:
-                    pass
+                except json.JSONDecodeError as err:
+                    raise json.JSONDecodeError(f"Error decoding: {err}")
             return result
-        except Exception as e:
+        except Exception as err:
             return {
                 'url': url,
-                'error': str(e),
+                'error': str(err),
                 'status': None,
                 'body': None
             }
@@ -653,7 +662,6 @@ class SeleniumHTTPInterceptor:
     @keyword
     def clean_log_directory(self):
         """Clean (remove all files from) the log directory."""
-        import glob
         log_files = glob.glob(os.path.join(self.log_directory, "*.log"))
         for log_file in log_files:
             try:
@@ -665,7 +673,6 @@ class SeleniumHTTPInterceptor:
     @keyword
     def list_log_files(self):
         """List all log files in the log directory."""
-        import glob
         log_files = glob.glob(os.path.join(self.log_directory, "*.log"))
         if log_files:
             logging.info(f"DEBUG: Log files found in {self.log_directory}:")
